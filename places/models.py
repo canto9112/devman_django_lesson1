@@ -14,9 +14,6 @@ class Place(models.Model):
     def __str__(self):
         return self.title
 
-    class Meta(object):
-        ordering = ['title']
-
 
 class Image(models.Model):
     place = models.ForeignKey(Place, on_delete=models.CASCADE, related_name='images')

@@ -13,12 +13,11 @@ class ImageInstanceInline(SortableInlineAdminMixin, admin.TabularInline):
 
 
 @admin.register(Place)
-class PlaceAdmin(SortableAdminMixin, admin.ModelAdmin):
-
+class PlaceAdmin(admin.ModelAdmin):
     inlines = [ImageInstanceInline]
 
-class ImageAdmin(admin.ModelAdmin):
 
+class ImageAdmin(admin.ModelAdmin):
     readonly_fields = ["preview"]
 
     def preview(self, obj):
