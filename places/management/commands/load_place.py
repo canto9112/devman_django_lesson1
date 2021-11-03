@@ -1,17 +1,16 @@
 import os
 import requests
-
 from django.core.files.base import ContentFile
 from django.core.management.base import BaseCommand
 from io import BytesIO
-from places.models import Place, Image
+from places.models import Image, Place
 
 
 class Command(BaseCommand):
     help = 'Добавить места из ссылки на json'
 
     def add_arguments(self, parser):
-        parser.add_argument('place_url', type=str, help='ссылка на json', )
+        parser.add_argument('place_url', type=str, help='ссылка на json')
 
     def handle(self, *args, **options):
         place_response = requests.get(options['place_url'])
