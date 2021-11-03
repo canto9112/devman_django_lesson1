@@ -48,5 +48,4 @@ def get_detailsUrl(request, place_id):
             'lng': current_place.lng
         }
     }
-    return JsonResponse(response_data, safe=False, json_dumps_params={'ensure_ascii': False,
-                                                                      'indent': 2})
+    return JsonResponse(response_data, safe=False, json_dumps_params={'ensure_ascii': False, 'indent': 2})
