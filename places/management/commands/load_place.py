@@ -29,8 +29,8 @@ class Command(BaseCommand):
                 img_response = requests.get(img_url)
                 img_response.raise_for_status()
                 filename = os.path.basename(img_url)
-                image_number = 1 + default_img_number
-                picture = Image.objects.create(place=place, img_number=image_number)
+                default_img_number += 1 
+                picture = Image.objects.create(place=place, img_number=default_img_number)
                 picture.image.save(filename, ContentFile(BytesIO(img_response.content).getvalue()), save=False)
                 picture.save()
         else:
