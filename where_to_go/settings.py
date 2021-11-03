@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = env.str('SECRET_KEY', default='django-insecure-c*7aetmrp#)m)ben$48f=ocsx&b8b_e8=3*lp+@8$1f06x(q@_')
 
-DEBUG = env.bool('DEBUG',  dfault=True)
+DEBUG = env.bool('DEBUG',  default=False)
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'canto911.pythonanywhere.com']
 
