@@ -18,7 +18,7 @@ def serialize_place(place):
                 "properties": {
                     "title": place.title,
                     "placeId": place.pk,
-                    "detailsUrl": reverse('get_detailsUrl', args=[place.pk])
+                    "detailsUrl": reverse('get_details_url', args=[place.pk])
                 }
             }]
     }
@@ -32,7 +32,7 @@ def index(request):
     return render(request, "index.html", context)
 
 
-def get_detailsUrl(request, place_id):
+def get_details_url(request, place_id):
     current_place = get_object_or_404(Place, pk=place_id)
     image_place = current_place.images.all()
     image_urls = [place_image.image.url for place_image in image_place]
