@@ -34,12 +34,10 @@ def index(request):
 
 def get_details_url(request, place_id):
     current_place = get_object_or_404(Place, pk=place_id)
-    image_place = current_place.images.all()
-    image_urls = [place_image.image.url for place_image in image_place]
-
+    
     response = {
         'title': current_place.title,
-        'imgs': image_urls,
+        'imgs': [image.image.url for image in current_place.images.all()],
         'lat': current_place.lat,
         'description_short': current_place.description_short,
         'description_long': current_place.content,
