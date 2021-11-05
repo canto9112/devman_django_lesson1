@@ -23,7 +23,6 @@ class ImageAdmin(admin.ModelAdmin):
 
     def preview(self, obj):
         return format_html("<img src='{}' height=200px />", obj.image.url)
-        # return mark_safe(f'<img src="{obj.image.url}" style="max-height: 200px;">')
 
 
 admin.site.register(Image, ImageAdmin)
