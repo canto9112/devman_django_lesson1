@@ -19,6 +19,7 @@ class PlaceAdmin(admin.ModelAdmin):
 
 
 class ImageAdmin(admin.ModelAdmin):
+    raw_id_fields = ['place']
     readonly_fields = ["preview"]
 
     def preview(self, obj):
