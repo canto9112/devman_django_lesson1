@@ -18,10 +18,13 @@ class Command(BaseCommand):
         place_json = place_response.json()
         place, created = Place.objects.get_or_create(
             title=place_json['title'],
-            description_short=place_json['description_short'],
-            content=place_json['description_long'],
-            lng=place_json['coordinates']['lng'],
-            lat=place_json['coordinates']['lat']
+            defaults={
+                'title': place_json['title'],
+                'description_short': place_json['description_short'],
+                'content': place_json['description_long'],
+                'lng': place_json['coordinates']['lng'],
+                'lat': place_json['coordinates']['lat']
+            },
         )
         if created:
             default_img_number = 0
