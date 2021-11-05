@@ -28,11 +28,13 @@ class Command(BaseCommand):
         )
         if not created:
             return
-        
-        for img_number, img_url in enumerate(place_json['imgs'], start=1):
+
+        for img_number, img_url in enumerate(place_raw['imgs'], start=1):
             img_response = requests.get(img_url)
             img_response.raise_for_status()
             filename = os.path.basename(img_url)
             picture = Image.objects.create(place=place, img_number=img_number)
-            picture.image.save(filename, ContentFile(BytesIO(img_response.content).getvalue()), save=False)
+            picture.image.save(filename,
+                               ContentFile(BytesIO(img_response.content).getvalue()),
+                               save=False)
             picture.save()
