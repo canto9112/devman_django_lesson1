@@ -15,15 +15,15 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         place_response = requests.get(options['place_url'])
         place_response.raise_for_status()
-        place_json = place_response.json()
+        place_raw = place_response.json()
         place, created = Place.objects.get_or_create(
-            title=place_json['title'],
+            title=place_raw['title'],
             defaults={
-                'title': place_json['title'],
-                'description_short': place_json['description_short'],
-                'content': place_json['description_long'],
-                'lng': place_json['coordinates']['lng'],
-                'lat': place_json['coordinates']['lat']
+                'title': place_raw['title'],
+                'description_short': place_raw['description_short'],
+                'content': place_raw['description_long'],
+                'lng': place_raw['coordinates']['lng'],
+                'lat': place_raw['coordinates']['lat']
             },
         )
         if created:
