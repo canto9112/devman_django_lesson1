@@ -37,7 +37,7 @@ def get_details_url(request, place_id):
     image_place = current_place.images.all()
     image_urls = [place_image.image.url for place_image in image_place]
 
-    response_data = {
+    response = {
         'title': current_place.title,
         'imgs': image_urls,
         'lat': current_place.lat,
@@ -48,4 +48,4 @@ def get_details_url(request, place_id):
             'lng': current_place.lng
         }
     }
-    return JsonResponse(response_data, safe=False, json_dumps_params={'ensure_ascii': False, 'indent': 2})
+    return JsonResponse(response, safe=False, json_dumps_params={'ensure_ascii': False, 'indent': 2})
