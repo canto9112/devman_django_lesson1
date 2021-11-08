@@ -35,7 +35,7 @@ def index(request):
 def get_place_view(request, place_id):
     current_place = get_object_or_404(Place, pk=place_id)
 
-    response = {
+    context = {
         'title': current_place.title,
         'imgs': [image.image.url for image in current_place.images.all()],
         'lat': current_place.lat,
@@ -46,5 +46,5 @@ def get_place_view(request, place_id):
             'lng': current_place.lng
         }
     }
-    return JsonResponse(response, safe=False,
+    return JsonResponse(context, safe=False,
                         json_dumps_params={'ensure_ascii': False, 'indent': 2})
