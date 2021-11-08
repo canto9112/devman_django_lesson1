@@ -18,7 +18,7 @@ def serialize_place(place):
                 "properties": {
                     "title": place.title,
                     "placeId": place.pk,
-                    "detailsUrl": reverse('get_details_url', args=[place.pk])
+                    "detailsUrl": reverse('place_view', args=[place.pk])
                 }
             }]
     }
@@ -32,7 +32,7 @@ def index(request):
     return render(request, "index.html", context)
 
 
-def get_details_url(request, place_id):
+def get_place_view(request, place_id):
     current_place = get_object_or_404(Place, pk=place_id)
 
     response = {
