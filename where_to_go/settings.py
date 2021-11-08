@@ -96,8 +96,14 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR.joinpath('static')]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    '/var/www/static/',
+]
+
 STATIC_ROOT = env.str("STATIC_ROOT", default=os.path.join(BASE_DIR, "static"))
+
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = env.str("MEDIA_ROOT", default=os.path.join(BASE_DIR, "media"))
